@@ -39,3 +39,6 @@ folium.Marker(
   tooltip="클릭해보세요",
   icon = folium.Icon(color='green', icon='info-sign')
 ).add_to(m)
+
+# 4. 화면 출력
+st_folium(m, width=700, height=500)
