@@ -22,7 +22,7 @@ st.code("a=3")
 st.text("안녕~~ 남동고등학교 여러분.. 첫 페이지를 만드셨습니다.")
 
 # 2. 데이터 읽어오기(데이터 수집 csv)
-df = pd.read_csv('등산경로.csv',encoding='cp949')
+df = pd.read_csv('등산경로.csv',encoding='cp949')  #'cp949' -> 'utf-8'
 df_latlon = df[['위도','경도']]
 df_latlon = df_latlon.rename(columns={'위도':'lat','경도':'lon'})
 #st.map(df_latlon)
