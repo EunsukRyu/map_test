@@ -77,7 +77,7 @@ else:
     filtered_df = df[df['코스'] == selected_course].copy()
 
 m = folium.Map(
-    location = [37.40583317, 126.7214872],
+    location = [37.407514, 126.719833], # 듬배산 정상 GPS
     zoom_start=16
 )
 
