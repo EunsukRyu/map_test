@@ -139,7 +139,7 @@ for course_name, group in df.groupby('코스'):
 col1, col2 = st.columns([3,1])
 
 with col1:
-    st.subheader("🗺 등산 경로 지도")
+    st.subheader("🗺️ 등산 경로 지도")
     st_folium(m, width=700, height=500)
     
 with col2:
@@ -148,9 +148,24 @@ with col2:
         c_key = selected_course + '코스'
         info = course_info.get(c_key, {})
         st.markdown(f"### 🚩**{selected_course}** 코스")
+        st.info(f"🔔 {info.get('notice', '즐거운 등산 되세요!')}")
+        st.metric(label="⏱️ 예상 소요시간", value=info.get('time', '-'))
+        st.warning(f"💊 **주의사항**: {info.get('caution', '등산화를 착용하세요.')}")
+        
+        st.markdown("---")
+        st.subheader("📸 지점별 포인트 사진")
+
+        # 선택한 코스의 지점별 사진 목록 출력
+        for idx, row in filtered_df.iterrows():
+            st.write(f"📍 **{row['위치명']}**")
+            img_path = row['이미지']
+            if os.path.exists(img_path):
+                st.image(img_path, caption=row['위치명'], use_container_width=True)
+            else:
+                st.caption("📷 *(해당 지점 이미지 파일 준비 중)*")
         
     
-    st.info("🔔 길이 미끄럽습니다. 주의하세요.") # 코스별 정보 넣기
-    st.metric(label="소요시간", value="10분") # 소요시간, 정보 코스별로 넣기
-    st.write("💊 주의사항 : 등산화를 착용하세요.")
+    #st.info("🔔 길이 미끄럽습니다. 주의하세요.") # 코스별 정보 넣기
+    #st.metric(label="소요시간", value="10분") # 소요시간, 정보 코스별로 넣기
+    #st.write("💊 주의사항 : 등산화를 착용하세요.")
 
