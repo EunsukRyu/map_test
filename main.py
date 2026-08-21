@@ -159,10 +159,7 @@ with col2:
         for idx, row in filtered_df.iterrows():
             st.write(f"📍 **{row['위치명']}**")
             img_path = row['이미지']
-            if os.path.exists(img_path):
-                st.image(img_path, caption=row['위치명'], use_container_width=True)
-            else:
-                st.caption("📷 *(해당 지점 이미지 파일 준비 중)*")
+
         
     
     #st.info("🔔 길이 미끄럽습니다. 주의하세요.") # 코스별 정보 넣기
